@@ -67,6 +67,7 @@ O projeto em primeiro nível foi dividido em:
 - AWS EC2 (hospedagem da API e banco de dados)
 - AWS RDS (serviço do banco de dados relacional)
 - AWS SES (serviço de mailing para recuperação de senha/ confirmação de email)
+- Heroku (hospedagem da Interface Front-end)
 
 ## Metodologias utilizadas
 
