@@ -105,5 +105,23 @@ const getUser = async ({ user }, res, next) => {
   return ({ status: 200, payload: { name, email } });
 };
 
+const remove = async ({ body }, _res, next) => {
+  const user = await model.findUser('email', body.email);
 
-module.exports = { create, resetPassword, changeName, changePassword, getUser };
+  if (!user) {
+    const error = { status: 403, message: 'Email or password incorrect' };
+    return next(error);
+  }
+
+  const passwordIsValid = await bcrypt.compare(body.password, user.password);
+  if (!passwordIsValid) {
+    const error = { status: 403, message: 'Email or password incorrect' };
+    return next(error);
+  }
+
+  await user.destroy();
+  const response = ({ status: 200, payload: { message: 'User unsubscribed' } });
+  return response;
+};
+
+module.exports = { create, resetPassword, changeName, changePassword, getUser, remove };

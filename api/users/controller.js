@@ -33,6 +33,11 @@ const getUser = async (req, res, next) => {
   if (response) return res.status(response.status).json(response.payload);
 };
 
+const remove = async (req, res, next) => {
+  const { status, payload } = await services.remove(req, res, next);
+  return res.status(status).json(payload); 
+};
+
 controller.get('/getme', checkToken, getUser);
 controller.post('/register', create);
 controller.post('/resetpassword', checkToken, bodyCheck({ password, email }), resetPassword);
@@ -52,5 +57,7 @@ bodyCheck({
   }
 }),
 changePassword);
+
+controller.post('/unsubscribe', bodyCheck({ email, password }), remove);
 
 module.exports = controller;

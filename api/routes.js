@@ -22,6 +22,6 @@ routes.use('/favoritesseries', favoritesSeriesController);
 routes.use('/favoritesstories', favoritesStoriesController);
 routes.use('/favoritesevents', favoritesEventsController);
 routes.use('/favoritescreators', favoritesCreatorsController);
-
+routes.use('/favoritescreators', favoritesCreatorsController);
 
 module.exports = routes;
