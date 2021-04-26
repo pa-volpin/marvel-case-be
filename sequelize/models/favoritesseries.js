@@ -1,5 +1,5 @@
 const { v4 } = require('uuid');
-const models = require('../models');
+const models = require('.');
 
 const uuidv4 = v4;
 
